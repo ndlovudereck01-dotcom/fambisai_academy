@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Admission Inquiry{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-4">Admission Inquiry</h1>
+<p class="mb-6 text-gray-600">Submit your details and the admissions office will contact you with an application form.</p>
+
+<form method="post" class="max-w-lg space-y-4">
+    {% csrf_token %}
+    <div>
+        <label class="block font-medium">Parent/Guardian Name</label>
+        <input type="text" name="parent_name" required class="w-full border p-2 rounded">
+    </div>
+    <div>
+        <label class="block font-medium">Email</label>
+        <input type="email" name="email" required class="w-full border p-2 rounded">
+    </div>
+    <div>
+        <label class="block font-medium">Phone</label>
+        <input type="tel" name="phone" required class="w-full border p-2 rounded">
+    </div>
+    <div>
+        <label class="block font-medium">Child's Full Name</label>
+        <input type="text" name="child_name" required class="w-full border p-2 rounded">
+    </div>
+    <div>
+        <label class="block font-medium">Child's Date of Birth</label>
+        <input type="date" name="child_dob" required class="w-full border p-2 rounded">
+    </div>
+    <div>
+        <label class="block font-medium">Program of Interest</label>
+        <select name="program_interest" class="w-full border p-2 rounded">
+            <option>Early Childhood Development (3-5)</option>
+            <option>Primary School (6-12)</option>
+            <option>Senior School (13-16)</option>
+        </select>
+    </div>
+    <div>
+        <label class="block font-medium">Additional Message (optional)</label>
+        <textarea name="message" rows="3" class="w-full border p-2 rounded"></textarea>
+    </div>
+    <button type="submit" class="bg-blue-700 text-white px-6 py-2 rounded">Submit Inquiry</button>
+</form>
+{% endblock %}

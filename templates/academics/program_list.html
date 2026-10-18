@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Academics - Fambisai Christian Academy{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-6">What We Offer</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {% for program in programs %}
+        <div class="border rounded-lg p-4 shadow-sm">
+            <h2 class="text-xl font-semibold text-blue-800">{{ program.name }}</h2>
+            <p class="text-sm text-gray-500">{{ program.age_range }}</p>
+            <p class="mt-2">{{ program.description|truncatewords:20 }}</p>
+            <div class="mt-3 text-sm">
+                {% if program.is_boarding_available %}<span class="bg-blue-100 px-2 py-1 rounded">Boarding</span>{% endif %}
+                {% if program.is_day_school_available %}<span class="bg-green-100 px-2 py-1 rounded">Day School</span>{% endif %}
+            </div>
+            <a href="{{ program.get_absolute_url }}" class="inline-block mt-3 text-blue-600">Learn more &rarr;</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
